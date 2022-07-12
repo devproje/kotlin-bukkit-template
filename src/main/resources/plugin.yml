@@ -1,0 +1,6 @@
+name: ${rootProject.name}
+version: ${rootProject.version}
+api-version: 1.19
+main: ${plugin_main}
+libraries:
+  - io.github.monun:kommand-core:2.12.0
