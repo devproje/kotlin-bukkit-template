@@ -7,14 +7,11 @@ import org.bukkit.plugin.java.JavaPlugin
 lateinit var instance: CorePlugin
 
 class CorePlugin : JavaPlugin() {
-
     override fun onEnable() {
         instance = this
-
         kommand {
             CommandDispatcher.register(this)
         }
-
         server.pluginManager.apply {
             registerEvents(JoinQuit(), this@CorePlugin)
         }

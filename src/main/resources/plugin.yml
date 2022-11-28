@@ -3,4 +3,6 @@ version: ${rootProject.version}
 api-version: 1.19
 main: ${plugin_main}
 libraries:
-  - io.github.monun:kommand-core:2.12.0
+  - io.github.monun:kommand-core:2.14.0
+  - org.jetbrains.exposed:exposed-core:${exposed_version}
+  - org.jetbrains.exposed:exposed-jdbc:${exposed_version}

@@ -5,15 +5,11 @@ import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
+import org.bukkit.event.player.PlayerQuitEvent
 
 class JoinQuit : Listener {
-
     @EventHandler
     fun onJoin(event: PlayerJoinEvent) {
-        event.joinMessage(Component.text("+", NamedTextColor.GREEN).append(
-            Component.text(": ", NamedTextColor.WHITE).append(
-                Component.text(event.player.toString(), NamedTextColor.YELLOW)
-            )
-        ))
+        event.joinMessage(Component.text("Hello! ${event.player.name}"))
     }
 }
