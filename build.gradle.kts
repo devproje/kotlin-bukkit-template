@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.8.21"
+    kotlin("jvm") version "1.9.10"
 }
 
 group = property("group")!!
@@ -16,16 +16,17 @@ repositories {
     maven("https://repo.papermc.io/repository/maven-public/")
 }
 
+val exposed = property("exposed_version")
 dependencies {
     implementation(kotlin("stdlib"))
     implementation(kotlin("reflect"))
-    implementation("io.github.monun:kommand-api:3.1.3")
-    implementation("net.projecttl:InventoryGUI-api:4.4.1")
-    implementation("org.jetbrains.exposed:exposed-core:0.41.1")
-    implementation("org.jetbrains.exposed:exposed-jdbc:0.41.1")
+    implementation("io.github.monun:kommand-api:3.1.7")
+    implementation("net.projecttl:InventoryGUI-api:4.4.0")
+    implementation("org.jetbrains.exposed:exposed-core:$exposed")
+    implementation("org.jetbrains.exposed:exposed-jdbc:$exposed")
 
-    compileOnly("org.mariadb.jdbc:mariadb-java-client:3.1.2")
-    compileOnly("io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT")
+    compileOnly("org.mariadb.jdbc:mariadb-java-client:3.2.0")
+    compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
 }
 
 tasks {
@@ -45,5 +46,9 @@ tasks {
         archiveVersion.set("")
 
         from(sourceSets["main"].output)
+        doLast {
+            val dir = File("\$HOME/Workspace/.Service/papermc/plugins")
+            file("build/libs/${rootProject.name}.jar").copyTo(dir, true)
+        }
     }
 }
